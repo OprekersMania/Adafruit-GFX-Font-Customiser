@@ -81,7 +81,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.9);
       color: white;
       font-weight: bold;
       font-size: 2em;
@@ -144,6 +144,10 @@
       margin: 1rem;
       box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
     }
+	
+	.ui.button, .ui.buttons .button, .ui.buttons .or {
+		margin-bottom: 2px;
+	}
    </style>
 </head>
 <body>
@@ -152,6 +156,7 @@
   <h1 class="ui header">Adafruit GFX Pixel font customiser</h1>
   <p>
     <em>Created by <a href="https://github.com/tchapi">tchapi</a>, major improvements by <a href="https://github.com/cmarrin">cmarrin</a> and <a href="https://github.com/charno">charno</a> - Source code available on <a href="https://github.com/tchapi/Adafruit-GFX-Font-Customiser">Github</a>.</em>
+	<h3 style="color:green"><u>Try my modification version with lot feature - <a href="Opreker_Version.html">CLICK HERE</a></u></h3>
   </p>
 
   <div class="ui divider"></div>
@@ -162,11 +167,181 @@
         <div class="ui form">
           <div class="field">
             <label>Extract font from source</label>
-            <textarea id="source"></textarea>
+            <textarea id="source">
+// SAMPLE FONT FOR THIS PAGE
+// Font Name	= Dernyn11full.h
+// Font Height 	= 12 pixels
+// Font Set 	= space !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLM
+//            	  NOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+// Script editor mod by DONY OPREKERS
+
+const uint8_t Dernyn11fullBitmaps[] PROGMEM = {
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6F, 0xFF, 0x66, 
+  0x06, 0x60, 0xCF, 0x3C, 0xD2, 0x6C, 0xDB, 0xFB, 0x66, 0xCD, 0xBF, 0xB6, 
+  0x6C, 0x00, 0x31, 0xFC, 0x30, 0x78, 0x30, 0xFE, 0x30, 0x00, 0xC7, 0x31, 
+  0x8C, 0x63, 0x38, 0xC0, 0x71, 0xB3, 0x63, 0x8F, 0xBB, 0xF3, 0x6E, 0x76, 
+  0x6D, 0xE0, 0x19, 0x99, 0x8C, 0x61, 0x86, 0x18, 0xC3, 0x0C, 0x31, 0x8C, 
+  0xCC, 0xC0, 0x66, 0x3C, 0xFF, 0x3C, 0x66, 0x30, 0xCF, 0xCC, 0x30, 0x77, 
+  0xC0, 0xFE, 0x00, 0x00, 0x00, 0x01, 0xCE, 0x70, 0x00, 0x02, 0x0C, 0x30, 
+  0xC3, 0x0C, 0x30, 0x40, 0x3C, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 
+  0x3C, 0x08, 0x18, 0x78, 0x18, 0x18, 0x18, 0x18, 0x18, 0x7E, 0x3C, 0x66, 
+  0x66, 0x06, 0x0C, 0x18, 0x30, 0x66, 0x7E, 0x3C, 0x66, 0x06, 0x06, 0x1C, 
+  0x06, 0x06, 0x66, 0x3C, 0x06, 0x0E, 0x1E, 0x36, 0x66, 0x7E, 0x06, 0x06, 
+  0x0F, 0x7E, 0x60, 0x60, 0x60, 0x7C, 0x06, 0x06, 0x66, 0x3C, 0x1C, 0x30, 
+  0x60, 0x60, 0x7C, 0x66, 0x66, 0x66, 0x3C, 0x7E, 0x66, 0x66, 0x06, 0x0C, 
+  0x18, 0x30, 0x30, 0x30, 0x3C, 0x66, 0x66, 0x76, 0x3C, 0x6E, 0x66, 0x66, 
+  0x3C, 0x3C, 0x66, 0x66, 0x66, 0x3E, 0x0C, 0x0C, 0x18, 0x38, 0xFC, 0x0F, 
+  0xC0, 0xFC, 0x0F, 0xDE, 0x0C, 0x63, 0x18, 0xC1, 0x83, 0x06, 0x0C, 0xFC, 
+  0x0F, 0xC0, 0xC1, 0x83, 0x06, 0x0C, 0x63, 0x18, 0xC0, 0x7B, 0x30, 0xC6, 
+  0x30, 0xC0, 0x0C, 0x30, 0x7D, 0x8F, 0x1E, 0xFD, 0xFB, 0xF0, 0x60, 0x7C, 
+  0x31, 0xEC, 0xF3, 0xCF, 0xFC, 0xF3, 0xCC, 0xFC, 0xCD, 0x9B, 0x37, 0xCC, 
+  0xD9, 0xB3, 0xFC, 0x3C, 0xCF, 0x1E, 0x0C, 0x18, 0x31, 0xB3, 0x3C, 0xF8, 
+  0xD9, 0x9B, 0x36, 0x6C, 0xD9, 0xB6, 0xF8, 0xFE, 0xC5, 0x83, 0x27, 0xCC, 
+  0x98, 0x31, 0xFE, 0xFE, 0xCD, 0x8B, 0x27, 0xCC, 0x98, 0x30, 0xF0, 0x3C, 
+  0xCF, 0x1E, 0x0C, 0x19, 0xF1, 0xB3, 0x3E, 0xCF, 0x3C, 0xF3, 0xFF, 0x3C, 
+  0xF3, 0xCC, 0xF6, 0x66, 0x66, 0x66, 0xF0, 0x1E, 0x18, 0x30, 0x60, 0xD9, 
+  0xB3, 0x66, 0x78, 0xE6, 0xCD, 0xB3, 0x67, 0x8D, 0x9B, 0x33, 0xE6, 0xF0, 
+  0xC1, 0x83, 0x06, 0x0C, 0x59, 0xB3, 0xFE, 0xC7, 0xDF, 0xFF, 0xFD, 0x78, 
+  0xF1, 0xE3, 0xC6, 0xC7, 0x8F, 0x9F, 0xBF, 0xFB, 0xF3, 0xE3, 0xC6, 0x38, 
+  0xDB, 0x1E, 0x3C, 0x78, 0xF1, 0xB6, 0x38, 0xFC, 0xCD, 0x9B, 0x37, 0xCC, 
+  0x18, 0x30, 0xF0, 0x38, 0xDB, 0x1E, 0x3C, 0x79, 0xF7, 0xBE, 0x0C, 0x3C, 
+  0xFC, 0xCD, 0x9B, 0x37, 0xCD, 0x99, 0xB3, 0xE6, 0x7B, 0x3C, 0xF0, 0x70, 
+  0x6C, 0xF3, 0x78, 0xFE, 0xD3, 0x0C, 0x30, 0xC3, 0x0C, 0x78, 0xCF, 0x3C, 
+  0xF3, 0xCF, 0x3C, 0xF3, 0x78, 0xCF, 0x3C, 0xF3, 0xCF, 0x3C, 0xDE, 0x30, 
+  0xC7, 0x8F, 0x1E, 0x3D, 0x7A, 0xDB, 0x36, 0x6C, 0xCF, 0x3C, 0xDE, 0x31, 
+  0xEC, 0xF3, 0xCC, 0xCF, 0x3C, 0xF3, 0x78, 0xC3, 0x0C, 0x78, 0xFF, 0x9E, 
+  0x60, 0xC3, 0x0C, 0x18, 0xE3, 0xFE, 0xFC, 0xCC, 0xCC, 0xCC, 0xF0, 0x81, 
+  0x81, 0x81, 0x81, 0x81, 0x81, 0x81, 0xF3, 0x33, 0x33, 0x33, 0xF0, 0x10, 
+  0x71, 0xB6, 0x30, 0xFF, 0xD9, 0x80, 0x78, 0x19, 0xF6, 0x6C, 0xCE, 0xC0, 
+  0xE0, 0xC1, 0x83, 0xE6, 0x6C, 0xD9, 0xB3, 0xDC, 0x7B, 0x3C, 0x30, 0xCD, 
+  0xE0, 0x1C, 0x18, 0x33, 0xEC, 0xD9, 0xB3, 0x66, 0x76, 0x7B, 0x3F, 0xF0, 
+  0xCD, 0xE0, 0x39, 0xB6, 0x18, 0xF9, 0x86, 0x18, 0xF0, 0x77, 0x9B, 0x36, 
+  0x67, 0xC1, 0xB3, 0x3C, 0xE0, 0xC1, 0x83, 0x67, 0x6C, 0xD9, 0xB3, 0xE6, 
+  0x30, 0xC0, 0x3C, 0x30, 0xC3, 0x0C, 0xFC, 0x0C, 0x30, 0x0F, 0x0C, 0x30, 
+  0xC3, 0xCF, 0x37, 0x80, 0xE0, 0xC1, 0x83, 0x36, 0xCF, 0x1B, 0x33, 0xE6, 
+  0xF0, 0xC3, 0x0C, 0x30, 0xC3, 0x0C, 0xFC, 0xFD, 0xAF, 0x5E, 0xBD, 0x7A, 
+  0xC0, 0xFB, 0x3C, 0xF3, 0xCF, 0x30, 0x7B, 0x3C, 0xF3, 0xCD, 0xE0, 0xDC, 
+  0xCD, 0x9B, 0x36, 0x6F, 0x98, 0x78, 0x77, 0x9B, 0x36, 0x6C, 0xCF, 0x83, 
+  0x0F, 0xEC, 0xDD, 0xDB, 0x06, 0x1E, 0x00, 0x7B, 0x36, 0x06, 0xCD, 0xE0, 
+  0x21, 0x8F, 0xD8, 0x61, 0x86, 0xCE, 0xCD, 0x9B, 0x36, 0x6C, 0xCE, 0xC0, 
+  0xCF, 0x3C, 0xF3, 0x78, 0xC0, 0xC7, 0xAF, 0x5E, 0xB6, 0xCD, 0x80, 0xC6, 
+  0xD8, 0xE1, 0xC6, 0xD8, 0xC0, 0x66, 0xCD, 0x9B, 0x33, 0xC1, 0x86, 0x78, 
+  0xFE, 0x31, 0x98, 0xC7, 0xF0, 0x1C, 0xC3, 0x18, 0xC1, 0x83, 0x0C, 0x1C, 
+  0xFF, 0x3F, 0xC0, 0xE0, 0xC3, 0x06, 0x0C, 0x63, 0x0C, 0xE0, 0x73, 0xDA, 
+  0xCE
+};
+
+const GFXglyph Dernyn11fullGlyphs[] PROGMEM = {
+//    Pos  Col  Row  Xadv  Xoff  Base    Ascii hex   Char    Hex Count
+  {     0,   8,   9,   8,    0,    0 },   // 0x20     ' '     '9'
+  {     9,   4,   9,   5,    0,    0 },   // 0x21     '!'     '5'
+  {    14,   6,   4,   7,    0,    0 },   // 0x22     '"'     '3'
+  {    17,   7,   9,   8,    0,    0 },   // 0x23     '#'     '9'
+  {    26,   6,   9,   7,    0,    0 },   // 0x24     '$'     '8'
+  {    34,   6,   7,   7,    0,    2 },   // 0x25     '%'     '6'
+  {    40,   7,   9,   8,    0,    0 },   // 0x26     '&'     '8'
+  {    48,   3,   4,   4,    0,    0 },   // 0x27     '''     '2'
+  {    50,   5,   9,   6,    0,    0 },   // 0x28     '('     '6'
+  {    56,   5,   9,   6,    0,    0 },   // 0x29     ')'     '6'
+  {    62,   8,   5,   9,    0,    2 },   // 0x2A     '*'     '5'
+  {    67,   6,   5,   7,    0,    2 },   // 0x2B     '+'     '4'
+  {    71,   4,   3,   5,    0,    7 },   // 0x2C     ','     '2'
+  {    73,   7,   1,   8,    0,    4 },   // 0x2D     '-'     '1'
+  {    74,   5,   9,   5,    0,    0 },   // 0x2E     '.'     '7'
+  {    81,   7,   8,   8,    0,    1 },   // 0x2F     '/'     '7'
+  {    88,   8,   9,   8,    0,    0 },   // 0x30     '0'     '9'
+  {    97,   8,   9,   8,    0,    0 },   // 0x31     '1'     '9'
+  {   106,   8,   9,   8,    0,    0 },   // 0x32     '2'     '9'
+  {   115,   8,   9,   8,    0,    0 },   // 0x33     '3'     '9'
+  {   124,   8,   9,   8,    0,    0 },   // 0x34     '4'     '9'
+  {   133,   8,   9,   8,    0,    0 },   // 0x35     '5'     '9'
+  {   142,   8,   9,   8,    0,    0 },   // 0x36     '6'     '9'
+  {   151,   8,   9,   8,    0,    0 },   // 0x37     '7'     '9'
+  {   160,   8,   9,   8,    0,    0 },   // 0x38     '8'     '9'
+  {   169,   8,   9,   8,    0,    0 },   // 0x39     '9'     '9'
+  {   178,   3,   6,   4,    0,    2 },   // 0x3A     ':'     '3'
+  {   181,   3,   8,   4,    0,    2 },   // 0x3B     ';'     '3'
+  {   184,   6,   9,   7,    0,    0 },   // 0x3C     '<'     '7'
+  {   191,   6,   3,   7,    0,    3 },   // 0x3D     '='     '3'
+  {   194,   6,   9,   7,    0,    0 },   // 0x3E     '>'     '7'
+  {   201,   6,   9,   7,    0,    0 },   // 0x3F     '?'     '7'
+  {   208,   7,   9,   8,    0,    0 },   // 0x40     '@'     '8'
+  {   216,   6,   9,   7,    0,    0 },   // 0x41     'A'     '7'
+  {   223,   7,   9,   8,    0,    0 },   // 0x42     'B'     '8'
+  {   231,   7,   9,   8,    0,    0 },   // 0x43     'C'     '8'
+  {   239,   7,   9,   8,    0,    0 },   // 0x44     'D'     '8'
+  {   247,   7,   9,   8,    0,    0 },   // 0x45     'E'     '8'
+  {   255,   7,   9,   8,    0,    0 },   // 0x46     'F'     '8'
+  {   263,   7,   9,   8,    0,    0 },   // 0x47     'G'     '8'
+  {   271,   6,   9,   7,    0,    0 },   // 0x48     'H'     '7'
+  {   278,   4,   9,   5,    0,    0 },   // 0x49     'I'     '5'
+  {   283,   7,   9,   8,    0,    0 },   // 0x4A     'J'     '8'
+  {   291,   7,   9,   8,    0,    0 },   // 0x4B     'K'     '8'
+  {   299,   7,   9,   8,    0,    0 },   // 0x4C     'L'     '8'
+  {   307,   7,   9,   8,    0,    0 },   // 0x4D     'M'     '8'
+  {   315,   7,   9,   8,    0,    0 },   // 0x4E     'N'     '8'
+  {   323,   7,   9,   8,    0,    0 },   // 0x4F     'O'     '8'
+  {   331,   7,   9,   8,    0,    0 },   // 0x50     'P'     '8'
+  {   339,   7,  10,   8,    0,    0 },   // 0x51     'Q'     '9'
+  {   348,   7,   9,   8,    0,    0 },   // 0x52     'R'     '8'
+  {   356,   6,   9,   7,    0,    0 },   // 0x53     'S'     '7'
+  {   363,   6,   9,   7,    0,    0 },   // 0x54     'T'     '7'
+  {   370,   6,   9,   7,    0,    0 },   // 0x55     'U'     '7'
+  {   377,   6,   9,   7,    0,    0 },   // 0x56     'V'     '7'
+  {   384,   7,   9,   8,    0,    0 },   // 0x57     'W'     '8'
+  {   392,   6,   9,   7,    0,    0 },   // 0x58     'X'     '7'
+  {   399,   6,   9,   7,    0,    0 },   // 0x59     'Y'     '7'
+  {   406,   7,   9,   8,    0,    0 },   // 0x5A     'Z'     '8'
+  {   414,   4,   9,   5,    0,    0 },   // 0x5B     '['     '5'
+  {   419,   7,   8,   8,    0,    1 },   // 0x5C     '\'     '7'
+  {   426,   4,   9,   5,    0,    0 },   // 0x5D     ']'     '5'
+  {   431,   7,   4,   8,    0,    0 },   // 0x5E     '^'     '4'
+  {   435,   8,   1,   9,    0,    9 },   // 0x5F     '_'     '1'
+  {   436,   3,   3,   4,    0,    0 },   // 0x60     '`'     '2'
+  {   438,   7,   6,   8,    0,    3 },   // 0x61     'a'     '6'
+  {   444,   7,   9,   8,    0,    0 },   // 0x62     'b'     '8'
+  {   452,   6,   6,   7,    0,    3 },   // 0x63     'c'     '5'
+  {   457,   7,   9,   8,    0,    0 },   // 0x64     'd'     '8'
+  {   465,   6,   6,   7,    0,    3 },   // 0x65     'e'     '5'
+  {   470,   6,   9,   7,    0,    0 },   // 0x66     'f'     '7'
+  {   477,   7,   8,   8,    0,    3 },   // 0x67     'g'     '7'
+  {   484,   7,   9,   8,    0,    0 },   // 0x68     'h'     '8'
+  {   492,   6,   9,   7,    0,    0 },   // 0x69     'i'     '7'
+  {   499,   6,  11,   7,    0,    0 },   // 0x6A     'j'     '9'
+  {   508,   7,   9,   8,    0,    0 },   // 0x6B     'k'     '8'
+  {   516,   6,   9,   7,    0,    0 },   // 0x6C     'l'     '7'
+  {   523,   7,   6,   8,    0,    3 },   // 0x6D     'm'     '6'
+  {   529,   6,   6,   7,    0,    3 },   // 0x6E     'n'     '5'
+  {   534,   6,   6,   7,    0,    3 },   // 0x6F     'o'     '5'
+  {   539,   7,   8,   8,    0,    3 },   // 0x70     'p'     '7'
+  {   546,   7,   8,   8,    0,    3 },   // 0x71     'q'     '7'
+  {   553,   7,   6,   8,    0,    3 },   // 0x72     'r'     '6'
+  {   559,   6,   6,   7,    0,    3 },   // 0x73     's'     '5'
+  {   564,   6,   8,   7,    0,    1 },   // 0x74     't'     '6'
+  {   570,   7,   6,   8,    0,    3 },   // 0x75     'u'     '6'
+  {   576,   6,   6,   7,    0,    3 },   // 0x76     'v'     '5'
+  {   581,   7,   6,   8,    0,    3 },   // 0x77     'w'     '6'
+  {   587,   7,   6,   8,    0,    3 },   // 0x78     'x'     '6'
+  {   593,   7,   8,   8,    0,    3 },   // 0x79     'y'     '7'
+  {   600,   6,   6,   7,    0,    3 },   // 0x7A     'z'     '5'
+  {   605,   6,   9,   7,    0,    0 },   // 0x7B     '{'     '7'
+  {   612,   2,   9,   3,    0,    0 },   // 0x7C     '|'     '3'
+  {   615,   6,   9,   7,    0,    0 },   // 0x7D     '}'     '7'
+  {   622,   8,   3,   9,    0,    0 }    // 0x7E     '~'     '3'
+};
+
+const GFXfont Dernyn11full PROGMEM = {
+  (uint8_t *) Dernyn11fullBitmaps, 
+  (GFXglyph *)Dernyn11fullGlyphs, 0x20, 0x7E,    12 };
+
+// File size approx : 10.46kb
+			</textarea>
           </div>
+			<button class="ui button green" id="openFile"><i class="icon open folder"></i> Open File</button>
             <button class="ui button teal" id="extract"><i class="icon upload"></i> Extract</button>
-            <button class="ui button red right floated" id="reset" disabled><i class="icon undo"></i> Reset</button>
-            <button class="ui button blue right floated" id="createFont"><i class="icon file outline"></i> Create a new font</button>
+            <button class="ui button red" id="reset"><i class="icon undo"></i> Reset</button>
+            <button class="ui button blue" id="createFont"><i class="icon file outline"></i> Create a new font</button>
+			<button class="ui button pink" id="clearText"><i class="eraser icon"></i>Clear TextArea</button>
         </div>
       </div>
     </div>
@@ -272,7 +447,7 @@
         <div class="ui form">
           <div class="field">
             <label>Output</label>
-            <textarea id="result" readonly></textarea>
+            <textarea id="result"></textarea>
           </div>
           <div class="two fields">
             <div class="field">
@@ -284,7 +459,10 @@
               <input type="text" id="lastglyph" value="0x00" />
             </div>
           </div>
-          <button class="ui button green" id="export" disabled="disabled"><i class="icon download"></i> Process and create file</button>
+          <button class="ui button green" id="export"><i class="icon download"></i> Process and create file</button>
+		  <button class="ui button red" id="savefile"><i class="save icon"></i>Save to file</button>
+		  <button class="ui button purple" id="copyToClip"><i class="copy icon"></i>Copy to Clipboard</button>
+		  <button class="ui button blue" id="reEdit" ><i class="recycle icon"></i>Re-Edit result</button>
         </div>
       </div>
     </div>
@@ -327,7 +505,7 @@
   <div class="ui divider"></div>
 
   <h2 class="ui header">Glyphs <em class="fontname" style="display: none;">FontName unknown</em></h2>
-  <p><button class="ui small button violet" id="add" disabled="disabled"><i class="icon add"></i> Add a new character</button></p>
+  <p><button class="ui small button violet" id="add" ><i class="icon add"></i> Add a new character</button></p>
 
   <div id="loader">
     <div class="advance-wrapper"><div class="advance"></div></div>
@@ -337,6 +515,37 @@
 </body>
 <script>
 
+
+// Function for file input and processing
+document.getElementById('openFile').addEventListener('click', function () {
+	// Create a file input element
+	const fileInput = document.createElement('input');
+	fileInput.type = 'file';
+	fileInput.accept = '.h'; // Only accept .h files
+
+	// Handle file selection
+	fileInput.addEventListener('change', function (event) {
+		const file = event.target.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function (e) {
+				const content = e.target.result;
+
+				// Clear the textarea first
+				const textarea = document.getElementById('source');
+				textarea.value = ''; // Clear previous content
+
+				// Paste the content from the file
+				textarea.value = content;
+
+			};
+
+			reader.readAsText(file); // Read file content
+		}
+	});
+	// Trigger the file input click event
+	fileInput.click();
+});
 function makeUpDownButton (name, func, color, width) {
   const button = $('<div class="ui mini compact buttons" style="margin:1px"></div>')
   const style = 'ui compact button ' + func + '-handler ' + color
@@ -609,7 +818,7 @@ function extractFont () {
   $('#firstglyph').val(window["first"])
   $('#lastglyph').val(window["last"])
 
-  $('#add').attr('disabled', false)
+  // $('#add').attr('disabled', false)
 
   const glyphsArray = window[name + 'Glyphs']
 
@@ -689,10 +898,10 @@ function extractFont () {
     glyphAppendClosure(grid, (charIndex + 1) / glyphsArray.length)
   }
   
-  $('#export').prop( "disabled", false )
-  $('#reset').prop("disabled", false)
-  $('#createFont').prop( "disabled", true )
-  $('#extract').prop( "disabled", true )
+  // $('#export').prop( "disabled", false )
+  // $('#reset').prop("disabled", false)
+  // $('#createFont').prop( "disabled", true )
+  // $('#extract').prop( "disabled", true )
 }
 
 function displayGlyphTable () {
@@ -718,9 +927,9 @@ $(document).ready(function () {
   var clip_data = {}
 
   $('#new-character-code').parent().hide()
-  $('#add').attr('disabled', 'disabled')
-  $('#export').attr('disabled', 'disabled')
-  $('#reset').prop("disabled", 'disabled')
+  // $('#add').attr('disabled', 'disabled')
+  // $('#export').attr('disabled', 'disabled')
+  // $('#reset').prop("disabled", 'disabled')
   $('.ui.checkbox.use-charcode').checkbox()
 
   $(document).on('change', '.ui.checkbox.use-charcode input', function (e) {
@@ -767,6 +976,49 @@ $(document).ready(function () {
   window['name'] = null
   window['font_def'] = null
 
+  $('#clearText').click(function () {
+        $('#source').val('')
+  })
+
+	$('#savefile').click(function () {
+		var textToSave = document.getElementById("result").value;  // Ambil teks dari elemen dengan id 'result'
+		var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});  // Buat Blob dari teks
+		var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);  // Buat URL objek dari Blob
+
+		var downloadLink = document.createElement("a");  // Membuat elemen <a> untuk link unduhan
+		downloadLink.href = textToSaveAsURL;  // Set link ke URL objek
+		downloadLink.download = name + '.h';  // Tentukan nama file untuk diunduh
+		downloadLink.innerHTML = "Download File";  // Teks untuk link (bisa diubah sesuai kebutuhan)
+		downloadLink.onclick = function(event) {
+			document.body.removeChild(event.target);  // Hapus elemen setelah di-klik
+		};
+		downloadLink.style.display = "none";  // Sembunyikan link dari tampilan
+		document.body.appendChild(downloadLink);  // Tambahkan link ke body
+		downloadLink.click();  // Klik link untuk memulai download
+	});
+
+  $('#reEdit').click(function () {
+	let input = $('#result').val()
+	if (input.length === 0) {
+		  document.getElementById("ErrorMsg").style.display = "block";
+		  setTimeout(function(){ document.getElementById("ErrorMsg").style.display = "none"; }, 1000);
+		return;
+	}
+	$('#source').val('')
+    $('#glyphs').empty()
+	$('#source').val(input)
+	extractFont()
+	$('#result').val('')
+  })
+ 
+
+  $('#copyToClip').click(function () {
+  
+	  var copyText = document.getElementById("result");
+	  copyText.select();
+	  copyText.setSelectionRange(0, 9999999); /*Change higher if all content not copied*/
+	  document.execCommand("copy");
+  })
   $('#extract').click(function () {
     advanceLoading(0)
     $('#loader').fadeIn(function() {
@@ -782,11 +1034,11 @@ $(document).ready(function () {
       onApprove: function() {
         $('#glyphs').empty()
         $('#source').val('')
-        $('#createFont').prop("disabled", false)
-        $('#extract').prop("disabled", false)
-        $('#add').prop("disabled", "disabled")
-        $('#export').prop("disabled", "disabled")
-        $('#reset').prop("disabled", "disabled")
+        // $('#createFont').prop("disabled", false)
+        // $('#extract').prop("disabled", false)
+        // $('#add').prop("disabled", "disabled")
+        // $('#export').prop("disabled", "disabled")
+        // $('#reset').prop("disabled", "disabled")
         $('.fontname').text('Fontname unknown').hide()
       }
     }).modal('show')
